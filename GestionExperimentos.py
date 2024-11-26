@@ -11,7 +11,25 @@ class Experimento:
 
 # funcion para agregar una experimento - PIPE
 def agregarExperimento(listaExperimentos):
-    pass
+    nombreExperimento = input("Ingrese el nombre del experimento: ")
+    fecha_str = input("Ingrese la fecha de realizacion del experimento (DD/MM/YYYY): ")
+    try:
+        fecha = datetime.strptime(fecha_str, "%d/%m/%Y")
+    except ValueError:
+        print("Fecha no valida")
+        return
+    tipoExperimento = input("Ingrese el tipo de experimento (Quimica, Biologia, Fisica): ")
+    resultado_str = input("Ingrese los resultados obtenidos, separados en comas ej 3,4,5: ")
+    try:
+        resultado = list(map(float, resultado_str.split(",")))
+    except ValueError:
+        print("Resultados no validos")
+        return
+    
+    # crear un objeto y lo agrega a la lista de experimentos
+    experimento = Experimento(nombreExperimento, fecha, tipoExperimento, resultado)
+    listaExperimentos.append(experimento)
+    print("Experimento agregado con exito")
 
 # funcion para visualizar todos los experimentos - PIPE
 def visualizarExperimento(listaExperimentos):
