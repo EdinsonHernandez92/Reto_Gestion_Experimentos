@@ -33,7 +33,16 @@ def agregarExperimento(listaExperimentos):
 
 # funcion para visualizar todos los experimentos - PIPE
 def visualizarExperimento(listaExperimentos):
-    pass
+    if not listaExperimentos:
+        print("No hay experimentos registrados")
+        return
+    
+    for i, experimento in enumerate(listaExperimentos, start=1):
+        print(f"\nExperimento {i}")
+        print(f"Nombre Experimento: {experimento.nombreExperimento}")
+        print(f"Fecha de realizacion: {experimento.fecha.strftime('%d/%m/%Y')}")
+        print(f"Tipo de experimento: {experimento.tipoExperimento}")
+        print(f"Resultados obtenidos: {experimento.resultado}")
 
 # funcion para calculos basicos - EDINSON
 def calcularExperimento(listaExperimentos):
@@ -81,7 +90,18 @@ def compararExperimentoSeleccionados(listaExperimentos):
 
 # Funcion para generar informes - PIPE
 def generarInforme(listaExperimentos):
-    pass
+    if not listaExperimentos:
+        print("No hay experimentos registrados")
+        return
+    
+    with open("Informe_experimentos.txt", "w") as archivo:
+        for experimento in listaExperimentos:
+            archivo.write(f"Nombre Experimento: {experimento.nombreExperimento}\n")
+            archivo.write(f"Fecha de realizacion: {experimento.fecha.strftime('%d/%m/%Y')}\n")
+            archivo.write(f"Tipo de experimento: {experimento.tipoExperimento}\n")
+            archivo.write(f"Resultados obtenidos: {experimento.resultado}\n")
+            archivo.write("\n")
+    print("Informe generado como 'Informe_experimentos.txt'")
 
 # Menu - EDINSON
 def menu():
