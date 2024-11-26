@@ -67,7 +67,37 @@ def generarInforme(listaExperimentos):
 
 # Menu - EDINSON
 def menu():
-    pass
+    listaExperimentos=[]
+    while True:
+        print("\nMenu de opciones: ")
+        print("1. Agregar Experimento: ")
+        print("2. Visualizar Experimentos: ")
+        print("3. Calculos basicos de resultados obtenidos: ")
+        print("4. Comparacion de resultados obtenidos: ")
+        print("5. Generar informe: ")
+        print("6. Salir: ")
+
+        try:
+            opcion = int(input("Selecciones una opcion: "))
+        except ValueError:
+            print("Por favor, ingrese un numero valido")
+            continue
+
+        if opcion == 1:
+            agregarExperimento(listaExperimentos)
+        elif opcion == 2:
+            visualizarExperimento(listaExperimentos)
+        elif opcion == 3:
+            calcularExperimento(listaExperimentos)
+        elif opcion == 4:
+            compararExperimentoSeleccionados(listaExperimentos)
+        elif opcion == 5:
+            generarInforme(listaExperimentos)
+        elif opcion == 6:
+            print("Saliendo del programa...")
+            break
+        else:
+            print("Opcion invalida. Por favor intente nuevamente")
         
 if __name__ == "__main__":
     menu()
